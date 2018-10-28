@@ -1,6 +1,6 @@
 import css, {CSSMap, IRuleDefinitions} from '../css/css';
 
-export type ThemeProvider = (obj) => CSSMap
+export type ThemeProvider = (obj) => CSSMap<any>;
 export type ThemeEntry = {
 	id: number;
 	rules: IRuleDefinitions;
