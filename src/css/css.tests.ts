@@ -45,7 +45,7 @@ it('used with nested', () => {
 				opacity: .1
 			},
 		},
-
+		'qux': {},
 		'bar': {
 			marginLeft: 10,
 		},
@@ -59,7 +59,8 @@ it('used with nested', () => {
 		`.${cx.foo} + .${cx.foo},.${cx.bar}{margin-left:10px;}`,
 		`.${cx.foo}.${cx.bar}{opacity:0.5;}`,
 		`.${cx.foo}.${cx.qux}{opacity:0.1;}`,
-		`.${cx.foo}{color:red;}`
+		`.${cx.foo}{color:red;}`,
+		`.${cx.qux}{}`,
 	]);
 });
 
@@ -143,7 +144,7 @@ it('hrm', async () => {
 	process.env.NODE_ENV = 'dev';
 
 	// Server
-	let cx = css({'foo': {color: 'red'}});
+	css({'foo': {color: 'red'}});
 	const __css__ = document.createElement('style');
 	const usedCSS = getUsedCSS(true);
 
@@ -159,7 +160,7 @@ it('hrm', async () => {
 
 	// Client: add class (deduplicate)
 	process.env.RUN_AT = 'client';
-	cx = css({'bar': {color: 'red'}});
+	css({'bar': {color: 'red'}});
 
 	await pause();
 
@@ -168,7 +169,7 @@ it('hrm', async () => {
 
 	// Client: add class
 	process.env.RUN_AT = 'client';
-	cx = css({'qux': {color: 'green'}});
+	css({'qux': {color: 'green'}});
 
 	await pause();
 
@@ -177,7 +178,7 @@ it('hrm', async () => {
 
 	// Client: change class
 	process.env.RUN_AT = 'client';
-	cx = css({'foo': {color: 'green'}});
+	css({'foo': {color: 'green'}});
 
 	await pause();
 
@@ -186,7 +187,7 @@ it('hrm', async () => {
 
 	// Client: revert class
 	process.env.RUN_AT = 'client';
-	cx = css({'foo': {color: 'red'}});
+	css({'foo': {color: 'red'}});
 
 	await pause();
 

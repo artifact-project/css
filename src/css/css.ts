@@ -256,17 +256,19 @@ export function gradient(vector: string, colors: string[]) {
 	return `linear-gradient(${vector}, ${colors.join(', ')})`;
 }
 
+export type CSSMap<T extends IRuleDefinitions> = {
+	[K in keyof T]: string
+}
+
 export interface ICSSFactory {
-	(rules: IRuleDefinitions): {[name: string]: string};
+	<T extends IRuleDefinitions>(rules: T): CSSMap<T>;
 	fx: (keyframes: {[frame:string]: IRuleEntries}) => (detail: string) => IFx;
 	gradient: (vector: string, colors: string[]) => string;
 	scheme: (name: string, list: string[]) => {[name: string]: string};
 }
 
-export type CSSMap = {[name: string]: string};
-
-function css(rules: IRuleDefinitions): CSSMap {
-	const exports = {};
+function css<T extends IRuleDefinitions>(rules: T): CSSMap<T> {
+	const exports = {} as CSSMap<T>;
 	const linkedRules = {};
 
 	Object.keys(rules).forEach(selectors => {
@@ -274,7 +276,7 @@ function css(rules: IRuleDefinitions): CSSMap {
 	});
 
 	if (process.env.RUN_AT === 'server') {
-		const proxy = {};
+		const proxy = {} as CSSMap<T>;
 
 		Object.keys(exports).forEach(name => {
 			const rules = linkedRules[name];
