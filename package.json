@@ -1,6 +1,6 @@
 {
   "name": "@artifact-project/css",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Yet another CSS in JS",
   "author": "RubaXa <ibn@rubaxa.org>",
   "license": "MIT",
