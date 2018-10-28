@@ -14,7 +14,7 @@ Yet another CSS in JS
 
 
 ```ts
-import css, {getUsedCSS} from '@exility/css';
+import css, {getUsedCSS} from '@artifact-project/css';
 
 const cx = css({
 	'main': {
@@ -36,12 +36,12 @@ console.log(getUsedCSS());
 ---
 
 ### Usage
-Add `style#__css__` into `head` and before including `@exility/css`.
+Add `style#__css__` into `head` and before including `@artifact-project/css`.
 
 ```html
 <style id="__css__" data-names="%__USED_CSS_NAMES__%">%__USED_CSS_TEXT__%</style>
 <script type="module">
-	import css from './node_modules/@exility/css/index.js';
+	import css from './node_modules/@artifact-project/css/index.js';
 
 	const cx = css({
 		'link': {
@@ -69,7 +69,7 @@ Add `style#__css__` into `head` and before including `@exility/css`.
 Deduplication & critical css.
 
 ```ts
-import css, {getUsedCSS} from '@exility/css';
+import css, {getUsedCSS} from '@artifact-project/css';
 
 const some = css({
 	'main': {
