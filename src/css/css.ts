@@ -267,7 +267,7 @@ export interface ICSSFactory {
 	scheme: (name: string, list: string[]) => {[name: string]: string};
 }
 
-function css<T extends IRuleDefinitions>(rules: T): CSSMap<T> {
+export function css<T extends IRuleDefinitions>(rules: T): CSSMap<T> {
 	const exports = {} as CSSMap<T>;
 	const linkedRules = {};
 
