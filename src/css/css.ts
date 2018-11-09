@@ -33,7 +33,7 @@ export interface IUsedCSS {
 	cssText: string;
 }
 
-const R_UPPER = /[A-Z]/;
+const R_UPPERg = /[A-Z]/;
 const R_SELECTOR_GLUE = /\s*,\s*/;
 const R_SELECTOR = /(?:(?:^|\.)([a-z][a-z\d_-]+))|(\.?:host)/ig;
 const R_HAS_REF = /&/;
@@ -93,7 +93,7 @@ function kebabReplacer(chr) {
 }
 
 function toKebabCase(name) {
-	return name.replace(R_UPPER, kebabReplacer);
+	return name.replace(R_UPPERg, kebabReplacer);
 }
 
 function insertRule({name, linked, cssText}: IRuleRegistryEntry) {
