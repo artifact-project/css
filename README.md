@@ -1,6 +1,6 @@
 @artifact-project/css
 ---------------------
-Yet another CSS in JS
+Yet another CSS in <s>J</s>TS
 
 ### Features
 
